@@ -8,7 +8,7 @@ import re
 import unicodedata
 import torch
 import pickle
-from trans.vocabulary import PAD
+from neural_transducer.trans.vocabulary import PAD
 
 
 @dataclasses.dataclass

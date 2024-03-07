@@ -1,3 +1,5 @@
+import os
+os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
 import argparse
 import json
 import re
@@ -25,6 +27,7 @@ def compute_surprisals(rt_data:pd.DataFrame, model: Dict, corpus_name: str):
         transcript_surprisals = []
         for i in np.arange(len(sentences)):
             sent, tokens = process_sentence(sentences[i])
+            # print("sentence:", sent, "tokens:", tokens, "transcript_id:", tid, "sentence_id:", i, "model:", model['name'])
             if len(tokens):
                 if 'bpe' in model['name']:
                     tokens = model['tokenizer'].tokenize(sent)
@@ -32,7 +35,9 @@ def compute_surprisals(rt_data:pd.DataFrame, model: Dict, corpus_name: str):
                     sent = model['word_boundary'] + " ".join(tokens)
                     tokens[0] = model['word_boundary'] + tokens[0]
                 elif 'morph' in model['name']:
+                    # print("Sentence before tokenization: " + sent + "\n")
                     tokens, token_mapping = tokenize_sentence(model['transducer'], model['vocab'], sent, model['word_boundary'])
+                    # print("Tokens after tokenizatioon: " + str(tokens) + "\n")
                     sent = " ".join(tokens)
                     tokens = sent.split(" ")
                     lookup_tbl += token_mapping
@@ -64,6 +69,7 @@ def load_model(model_path: str, model_config: Dict):
     # Create a dictionary with the loaded ngram model and metadata from the config json
     model_dict = {}
     model_dict['name'] = model_path.split(".arpa")[0].split("/")[-1]
+    print(f"Loading {model_dict['name']} model")
     model_dict['lm'] = kenlm.Model(model_path)
     if "bpe" in model_dict['name']:
         model_dict['tokenizer'] = AutoTokenizer.from_pretrained("gpt2")
@@ -81,7 +87,7 @@ if __name__ == "__main__":
     parser.add_argument("--corpus_name", type = str, required=False, help="this is needed for morphological surprisal when we write lookup tables")
     args = parser.parse_args()
     corpus_surprisals = pd.DataFrame()
-    model_config = json.load(open("model_config.json"))
+    model_config = json.load(open("./model_config.json"))
     model = load_model(args.model, model_config)
     rt_df = pd.read_csv(args.data)
     corpus_surprisals = compute_surprisals(rt_df, model, args.corpus_name)

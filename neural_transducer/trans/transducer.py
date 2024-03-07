@@ -8,13 +8,13 @@ import argparse
 import torch
 import numpy as np
 
-from trans import optimal_expert
-from trans import vocabulary
-from trans.actions import ConditionalCopy, ConditionalDel, ConditionalIns, \
+from neural_transducer.trans import optimal_expert
+from neural_transducer.trans import vocabulary
+from neural_transducer.trans.actions import ConditionalCopy, ConditionalDel, ConditionalIns, \
     ConditionalSub, Edit, EndOfSequence, GenerativeEdit, BeginOfSequence
-from trans.vocabulary import BEGIN_WORD, COPY, DELETE, END_WORD, PAD, \
+from neural_transducer.trans.vocabulary import BEGIN_WORD, COPY, DELETE, END_WORD, PAD, \
     FeatureVocabularies
-from trans import ENCODER_MAPPING
+from neural_transducer.trans import ENCODER_MAPPING
 
 
 MAX_ACTION_SEQ_LEN = 150

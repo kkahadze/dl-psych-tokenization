@@ -6,7 +6,7 @@ import collections
 import logging
 import os
 
-from trans import utils
+from neural_transducer.trans import utils
 
 
 def read_files(fileobj: TextIO):

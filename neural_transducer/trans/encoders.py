@@ -1,7 +1,7 @@
 """Encoder classes used by the Transducer model."""
 import argparse
 import math
-from trans import register_component
+from neural_transducer.trans import register_component
 
 
 import torch

@@ -3,9 +3,9 @@ from typing import Any, Iterable, List, Sequence
 
 import numpy as np
 
-from trans import actions
-from trans import optimal_expert
-from trans.actions import Copy, Del, Edit, EndOfSequence, Ins, Sub
+from neural_transducer.trans import actions
+from neural_transducer.trans import optimal_expert
+from neural_transducer.trans.actions import Copy, Del, Edit, EndOfSequence, Ins, Sub
 
 
 class EditDistanceAligner(actions.Aligner):

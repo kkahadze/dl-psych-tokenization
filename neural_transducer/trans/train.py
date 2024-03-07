@@ -10,12 +10,12 @@ import progressbar
 import torch
 import numpy as np
 
-from trans import optimal_expert_substitutions
-from trans import sed
-from trans import transducer
-from trans import utils
-from trans import vocabulary
-from trans import ENCODER_MAPPING, OPTIMIZER_MAPPING, LR_SCHEDULER_MAPPING
+from neural_transducer.trans import optimal_expert_substitutions
+from neural_transducer.trans import sed
+from neural_transducer.trans import transducer
+from neural_transducer.trans import utils
+from neural_transducer.trans import vocabulary
+from neural_transducer.trans import ENCODER_MAPPING, OPTIMIZER_MAPPING, LR_SCHEDULER_MAPPING
 
 random.seed(1)
 
