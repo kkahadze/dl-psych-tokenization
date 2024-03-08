@@ -3,7 +3,7 @@ from typing import Any, List, Iterable, Optional, Dict
 import logging
 import pickle
 
-from neural_transducer.trans.actions import BeginOfSequence, ConditionalCopy, ConditionalDel, \
+from trans.actions import BeginOfSequence, ConditionalCopy, ConditionalDel, \
     ConditionalIns, ConditionalSub, EndOfSequence
 
 

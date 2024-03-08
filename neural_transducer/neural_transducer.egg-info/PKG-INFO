@@ -1,4 +1,4 @@
-Metadata-Version: 2.1
+Metadata-Version: 1.2
 Name: neural-transducer
 Version: 0.2
 Summary: Neural transducer for grapheme-to-phoneme (Makarov & Clematide 2020)
@@ -6,8 +6,6 @@ Home-page: UNKNOWN
 Author: Peter Makarov, Simon Clematide & Silvan Wehrli
 Author-email: makarov@cl.uzh.ch
 License: Apache License 2.0
+Description: UNKNOWN
 Platform: UNKNOWN
 Requires-Python: ==3.*
-
-UNKNOWN
-

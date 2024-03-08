@@ -12,6 +12,7 @@ import numpy as np
 
 from nltk.tokenize import sent_tokenize
 from transformers import AutoTokenizer
+import pdb
 
 from src.morph_segmenter import load_model_and_vocab, tokenize_sentence
 
@@ -36,6 +37,7 @@ def compute_surprisals(rt_data:pd.DataFrame, model: Dict, corpus_name: str):
                     tokens[0] = model['word_boundary'] + tokens[0]
                 elif 'morph' in model['name']:
                     # print("Sentence before tokenization: " + sent + "\n")
+                    # pdb.set_trace()
                     tokens, token_mapping = tokenize_sentence(model['transducer'], model['vocab'], sent, model['word_boundary'])
                     # print("Tokens after tokenizatioon: " + str(tokens) + "\n")
                     sent = " ".join(tokens)

@@ -9,9 +9,9 @@ import pickle
 import numpy as np
 from scipy.special import logsumexp
 
-from neural_transducer.trans import actions
-from neural_transducer.trans import utils
-from neural_transducer.trans.actions import Copy, Del, Edit, EndOfSequence, Ins, Sub
+from trans import actions
+from trans import utils
+from trans.actions import Copy, Del, Edit, EndOfSequence, Ins, Sub
 
 
 LARGE_NEG_CONST = -float(10 ** 6)

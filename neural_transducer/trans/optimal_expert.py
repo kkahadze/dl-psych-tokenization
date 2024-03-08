@@ -8,7 +8,7 @@ import dataclasses
 
 import numpy as np
 
-from neural_transducer.trans.actions import ConditionalCopy, ConditionalDel, ConditionalIns, \
+from trans.actions import ConditionalCopy, ConditionalDel, ConditionalIns, \
     Edit, EndOfSequence
 
 

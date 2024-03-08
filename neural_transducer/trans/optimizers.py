@@ -1,7 +1,7 @@
 """Optimizer classes and lr scheduler used in training."""
 
 import argparse
-from neural_transducer.trans import register_component
+from trans import register_component
 
 import torch
 

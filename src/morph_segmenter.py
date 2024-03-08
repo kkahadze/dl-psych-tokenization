@@ -15,14 +15,14 @@ from neural_transducer.trans.train import decode
 
 def tokenize_sentence(model: transducer, vocab: vocabulary, sentence: str, wb_char: str):
     # the results contain the original token and the tab-separated output from the transducer 
-    print("tokenizing sentence: " + sentence)
-    print("using word boundary character: " + wb_char)
+    # print("tokenizing sentence: " + sentence)
+    # print("using word boundary character: " + wb_char)
     dataloader = prep_data([sentence], vocab, batch_size = 5)
-    print("prepped data: " + str(dataloader))
+    # print("prepped data: " + str(dataloader))
     results = predict(model, dataloader)
-    print("results: " + str(results))
+    # print("results: " + str(results))
     tokens = [insert_wb_char(token.split("\t")[1], wb_char) for token in results]
-    print("tokens: " + str(tokens))
+    # print("tokens: " + str(tokens))
     return tokens, results
     
 def tokenize_corpus(model_dir: str, sentence_list: List[str], wb_char: str):
