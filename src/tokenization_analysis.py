@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 
 from typing import Dict, List
-
+import string
 
 def align_surprisal(rt_data: pd.DataFrame, surprisals: pd.DataFrame, model_config: Dict, corpus_name: str, use_lookup: bool = False):
     rt_surprisals = []
@@ -27,7 +27,16 @@ def align_surprisal(rt_data: pd.DataFrame, surprisals: pd.DataFrame, model_confi
         ref = current_word[rt_columns.index('token')].lower()
         if use_lookup:
             ref = next(lookup_iterator)[2].lower()
-        mismatch = buffer['token'].lower() != ref
+        
+        extra_punctuation = "‘’“”"  # Add more characters as needed
+        all_punctuation = string.punctuation + extra_punctuation
+
+        # Making a translation table that maps each punctuation character to None
+        translation_table = str.maketrans('', '', all_punctuation)
+        print("BUFF", buffer['token'].lower().translate(translation_table))
+        print(ref)
+        print(ref.translate(translation_table))
+        mismatch = buffer['token'].lower().translate(translation_table) != ref.translate(translation_table)
         while mismatch:
             current_token = next(surprisal_iterator)[1:]
             token_index += 1
